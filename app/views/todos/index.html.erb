@@ -1,0 +1,8 @@
+<h1>Vista Index de todo</h1>
+
+<div class="well">
+<% @todos.each do |info| %>
+	<h1><%= info.description %></h1>
+	<h5><%= info.completed %></h5>
+<% end %>
+</div>
