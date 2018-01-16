@@ -1,13 +1,4 @@
 <h1>Vista NEW de todo</h1>
 
 
-<%= form_with(model: @todo) do |form| %>
-  <%= label(:description, 'Description of activitie') %>
-  <%= form.text_field :description %>
-
-  <%= label(:completed, 'Completly?') %>
-  <%= form.check_box :completed %> 
-
-  <%= form.submit 'Submit' %>
-
-<% end %>
+<%= render 'form' %>

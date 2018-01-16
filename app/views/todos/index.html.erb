@@ -1,9 +1,23 @@
 <h1>Vista Index de todo</h1>
 
-<%= link_to 'Crear ToDo', new_todo_path %>
-<div class="well">
-<% @todo.each do |info| %>
-	<h1><%= info.description %></h1>
-	<h5><%= info.completed %></h5>
-<% end %>
+<div class="container well">
+	<%= link_to 'Crear ToDo', todos_new_path %>
+
+	<div class="row">
+		<div class="col-md-6">
+			<% @todo.where(completed: false).find_each do |info| %>
+			<h1><%= link_to info.description, info %></h1>
+			<h5><%= info.completed %></h5>
+			<h5><%= link_to 'Edit', edit_path(info) %> - OR - <%= link_to("Delete", destroy_path(info), :data => {:confirm => "La neta? xD (realy ?)", :method => "delete"}) %> - OR - <%= link_to("Completed", completed_path(info), :data => {:confirm => "Buen trabajo men.. pero are you sure?)", :method => "completed"}) %></h5>
+			<% end %>
+		</div>	
+
+		<div class="col-md-6">
+			<% @todo.where(completed: true).find_each do |info| %>
+			<h1><%= link_to info.description, info %></h1>
+			<h5><%= info.completed %></h5>
+			<h5><%= link_to 'Edit', edit_path(info) %> - OR - <%= link_to("Delete", destroy_path(info), :data => {:confirm => "La neta? xD (realy ?)", :method => "delete"}) %></h5>
+			<% end %>
+		</div>	
+	</div>
 </div>
