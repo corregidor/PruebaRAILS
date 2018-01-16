@@ -1,7 +1,8 @@
 <h1>Vista Index de todo</h1>
 
+<%= link_to 'Crear ToDo', new_todo_path %>
 <div class="well">
-<% @todos.each do |info| %>
+<% @todo.each do |info| %>
 	<h1><%= info.description %></h1>
 	<h5><%= info.completed %></h5>
 <% end %>
